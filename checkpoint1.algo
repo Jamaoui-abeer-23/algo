@@ -1,6 +1,55 @@
 ALGORITHM algorithm_name
 VAR
-    set_declarations
+    length <- 0          // Character counter // integer
+    wordCount <- 0       // Word counter // integer 
+    vowelCount <- 0      // Vowel counter // integer 
+    vowels <- "aeiouAEIOU" // List of vowels // string
+    isInWord <- FALSE    // Boolean to track words// boolean 
+    character <- "" // character 
+    sentence <- "" // string 
+
 BEGIN
-    set_instructions
+    
+    
+    Write "Enter a sentence ending with a period:"
+    Read sentence
+    i <- 1 // Position of the current character in the sentence
+
+    While sentence[i] <> '.' Do
+        character <- sentence[i]
+
+        // Count the length
+        length <- length + 1
+
+        // Linear search to detect a vowel
+        found <- FALSE
+        j <- 1
+        While j <= length(vowels) AND found = FALSE Do
+            If character = vowels[j] Then
+                vowelCount <- vowelCount + 1
+                found <- TRUE
+            End If
+            j <- j + 1
+        End While
+
+        // Check if it's a new word
+        If character <> ' ' AND isInWord = FALSE Then
+            wordCount <- wordCount + 1
+            isInWord <- TRUE
+        End If
+
+        // If a space is found, exit the word
+        If character = ' ' Then
+            isInWord <- FALSE
+        End If
+
+        i <- i + 1 // Move to the next character
+    End While
+
+    // Display the results
+    Write "Sentence length: ", length
+    Write "Number of words: ", wordCount
+    Write "Number of vowels: ", vowelCount
+
+
 END
