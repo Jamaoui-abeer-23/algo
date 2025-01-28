@@ -1,4 +1,4 @@
-ALGORITHM algorithm_name
+ALGORITHM voyelle
 VAR
     length <- 0          // Character counter // integer
     wordCount <- 0       // Word counter // integer 
